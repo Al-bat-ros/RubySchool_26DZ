@@ -3,10 +3,19 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
-db_visit = SQLite3::Database.new 'db visit'
 
 configure do
   enable :sessions
+  @db_visit = SQLite3::Database.new 'db visit'
+  @db_visit.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
+              ( 
+                
+                `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
+                `Hairdresser` TEXT, `Name` TEXT,
+                `NumberPhone` INTEGER, `DataTime` INTEGER 
+
+              )'
+
 end
 
 helpers do
@@ -48,7 +57,7 @@ post '/visit' do
 
     @error = hh.select {|key,_| params[key] == ""}.values.join(',')
 
-   db_visit.execute "INSERT INTO Visit (Hairdresser,Name,NumberPhone,DataTime) VALUES ('@list', '@username', '@namber_phone', '@data_time')"
+   #@db_visit.execute "INSERT INTO Visit (Hairdresser,Name,NumberPhone,DataTime) VALUES ('@list', '@username', '@namber_phone', '@data_time')"
 
    #db_visit.close
 

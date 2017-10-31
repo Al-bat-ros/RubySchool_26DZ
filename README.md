@@ -1,2 +1,2 @@
-# RubySchool, Lesson 24
-Repository for Lesson 24
+# RubySchool, Lesson 26
+Repository for Lesson 26
