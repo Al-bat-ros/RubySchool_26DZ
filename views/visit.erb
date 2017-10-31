@@ -15,10 +15,10 @@
 
 <p>Выберать парикмахера из списка:</p>
    <p><select name="list" required>
-    <option></option>
-    <option value="Walter White">Walter White</option>
-    <option value="Jessie Pinkman">Jessie Pinkman</option>
-    <option value="Gus Fring">Gus Fring</option>
+        <option></option>
+        <option <%= @list == 'Walter White' ? 'selected' : '' %> value="Walter White">Walter White</option>
+        <option <%= @list == 'Jessie Pinkman' ? 'selected' : '' %> value="Jessie Pinkman">Jessie Pinkman</option>
+        <option <%= @list == 'Gus Fring' ? 'selected' : '' %> value="Gus Fring">Gus Fring</option>
    </select></p>
 
 
