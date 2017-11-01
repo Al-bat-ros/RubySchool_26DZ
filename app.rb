@@ -5,14 +5,16 @@ require 'sqlite3'
 
 
 configure do
-  enable :sessions
-  @db_visit = SQLite3::Database.new 'db visit'
-  @db_visit.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
-              ( 
+  
+
+ db = get_db
+  
+ db.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
+            ( 
                 
                 `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
-                `Hairdresser` TEXT, `Name` TEXT,
-                `NumberPhone` INTEGER, `DataTime` INTEGER 
+               `Hairdresser` TEXT, `Name` TEXT,
+                `NumberPhone` INTEGER, `DataStamp` INTEGER 
 
               )'
 
@@ -57,9 +59,18 @@ post '/visit' do
 
     @error = hh.select {|key,_| params[key] == ""}.values.join(',')
 
-   #@db_visit.execute "INSERT INTO Visit (Hairdresser,Name,NumberPhone,DataTime) VALUES ('@list', '@username', '@namber_phone', '@data_time')"
+     #Добавление в БД !!! ТАК НЕНАДО ДЕЛАТЬ !!!
 
-   #db_visit.close
+     #@db_visit.execute "INSERT INTO Visit (Hairdresser,Name,NumberPhone,DataStamp) VALUES ('#{@list}', '#{@username}', '#{@namber_phone}', '#{@data_time}')"
+     
+
+     #Добавление в БД !!! НУЖНО ДЕЛАТЬ ТАК !!!
+
+
+     db = get_db
+     db.execute 'INSERT INTO Visit 
+              (Hairdresser,Name,NumberPhone,DataStamp) VALUES (?,?,?,?)', [@list,@username,@namber_phone,@data_time]
+   
 
 
   f = File.open './public/user.txt','a'
@@ -71,6 +82,8 @@ post '/visit' do
   erb :visit
   
 end
+
+
 
 post '/contacts' do
   @Email1 = params[:Email1]
@@ -119,3 +132,10 @@ post '/login/form' do
   end
 
 end
+
+def get_db
+
+    return SQLite3::Database.new 'db visit'
+
+end
+
