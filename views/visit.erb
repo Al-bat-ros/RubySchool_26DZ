@@ -5,7 +5,11 @@
 
   $(function(){
     // тут я могу писать любой javascript code, 
-    //который исполнится только после загрузки страницы 
+    //который исполнится только после загрузки страницы
+    $('#color').simplecolorpicker(); 
+
+    $('#datetimepicker').datetimepicker(); 
+    
   });
 
 </script>
@@ -34,7 +38,7 @@
 
   <div class="form-group">
     <label>Время визита</label>
-    <input id="aaa" name="data_time" type="text" class="form-control"  placeholder="Введите время и дату" value="<%= @data_time %>">
+    <input id="datetimepicker" name="data_time" type="text" class="form-control"  placeholder="Введите время и дату" value="<%= @data_time %>">
   </div>
 
   <div class="form-group">
@@ -62,12 +66,15 @@
 
 <script type="text/javascript">
 
-$(function() { $('#color').simplecolorpicker(); })
-  
+$(function() { 
 
-  $('#aaa').css('background-color','yellow');
-  $('#bbb').css('background-color','blue');
-  $('.ccc').css('background-color','red');
+       
+
+      })
+
+  
+//  $('#bbb').css('background-color','blue');
+//  $('.ccc').css('background-color','red');
 
 </script>
 

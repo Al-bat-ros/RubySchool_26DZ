@@ -7,16 +7,16 @@ require 'sqlite3'
 configure do
   
 
- db = get_db
+# db = get_db
   
- db.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
-            ( 
-                
-                `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
-               `Hairdresser` TEXT, `Name` TEXT,
-                `NumberPhone` INTEGER, `DataStamp` INTEGER 
+# db.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
+#           ( 
+               
+ #              `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
+ #              `Hairdresser` TEXT, `Name` TEXT,
+ #              `NumberPhone` INTEGER, `DataStamp` INTEGER 
 
-              )'
+  #          )'
 
 end
 
