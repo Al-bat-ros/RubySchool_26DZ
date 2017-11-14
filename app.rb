@@ -12,11 +12,11 @@ configure do
 # db.execute 'CREATE TABLE IF NOT EXISTS `Visit` 
 #           ( 
                
- #              `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
- #              `Hairdresser` TEXT, `Name` TEXT,
- #              `NumberPhone` INTEGER, `DataStamp` INTEGER 
+#              `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
+#              `Hairdresser` TEXT, `Name` TEXT,
+#              `NumberPhone` INTEGER, `DataStamp` INTEGER 
 
-  #          )'
+#           )'
 
 end
 
@@ -126,16 +126,30 @@ post '/login/form' do
   @Password2 = params[:Password2]
 
   if @Email2 == 'admin@mail.ru' && @Password2 == '123456'
-          erb 'Добрый день Админ'
+
+        erb 'admin'
+        
+
     else
           erb 'Проверьте логин и пароль'
   end
 
 end
 
+get '/admin' do
+#    erb db.execute 'select * from Visit' do |row|
+#    print row[1]
+#    print "\t-\t"
+#    purs  row[3]
+#    puts '========='
+
+  erb 'Hello World'
+end
+
 def get_db
 
-    return SQLite3::Database.new 'db visit'
-
+    db = SQLite3::Database.new 'db visit'
+    db.results_as_hash = true
+    return db
 end
 
