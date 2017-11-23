@@ -127,8 +127,7 @@ post '/login/form' do
 
   if @Email2 == 'admin@mail.ru' && @Password2 == '123456'
 
-        erb 'admin'
-        
+        erb :admin
 
     else
           erb 'Проверьте логин и пароль'
@@ -137,13 +136,17 @@ post '/login/form' do
 end
 
 get '/admin' do
-#    erb db.execute 'select * from Visit' do |row|
-#    print row[1]
-#    print "\t-\t"
-#    purs  row[3]
-#    puts '========='
+   #select * from Users order by id desc
+  db = get_db
+  db.execute 'select * from Visit' do |row|
+      @name = row['Name']
+#     print "\t-\t"
+#      purs  row[3]
+     puts '========='
+  end
 
-  erb 'Hello World'
+     erb :admin
+
 end
 
 def get_db
