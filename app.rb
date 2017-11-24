@@ -136,16 +136,12 @@ post '/login/form' do
 end
 
 get '/admin' do
-   #select * from Users order by id desc
-  db = get_db
-  db.execute 'select * from Visit' do |row|
-      @name = row['Name']
-#     print "\t-\t"
-#      purs  row[3]
-     puts '========='
-  end
 
-     erb :admin
+  db = get_db
+
+  @results = db.execute 'select * from Visit order by id desc'
+   
+  erb :admin
 
 end
 
@@ -155,4 +151,3 @@ def get_db
     db.results_as_hash = true
     return db
 end
-

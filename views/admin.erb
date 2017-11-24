@@ -1,5 +1,14 @@
 <h2> Добрый день Админ </h2>
 
+<!--<%= @results %>
+
+<% @results.each do |row| %>
+
+       Something!!!
+
+<% end %> -->
+
+
 <table class="table table-hover">
       <thead>
         <tr>
@@ -11,27 +20,17 @@
         </tr>
       </thead>
       <tbody>
+
+      <% @results.each do |row| %>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td></td>
+          <td><%= row['Id'] %></td>
+          <td><%= row['Name'] %></td>
+          <td><%= row['NumberPhone'] %></td>
+          <td><%= row['DataStamp'] %></td>
+          <td><%= row['Hairdresser'] %></td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <td></td>
-        </tr>
+      <% end %>
+      
       </tbody>
     </table>
 
