@@ -104,6 +104,10 @@ post '/visit' do
 
     @error = hh.select {|key,_| params[key] == ""}.values.join(',')
 
+    if @error != ''
+       return erb :visit
+    end
+
      #Добавление в БД !!! ТАК НЕНАДО ДЕЛАТЬ !!!
 
      #@db_visit.execute "INSERT INTO Visit (Hairdresser,Name,NumberPhone,DataStamp) VALUES ('#{@list}', '#{@username}', '#{@namber_phone}', '#{@data_time}')"
@@ -124,7 +128,7 @@ post '/visit' do
 
   
 
-  erb :visit
+  erb "<h1>Спасибо, вы записаны</h1>"
   
 end
 
