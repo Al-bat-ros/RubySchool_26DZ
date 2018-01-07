@@ -16,12 +16,21 @@
 
 <form action="/visit" method="POST" role="form">
 
-<p>Выберать парикмахера из списка:</p>
+<label>Ваш парикмахер</label>
    <p><select name="list" required>
-        <option></option>
+<!--         <option></option>
         <option <%= @list == 'Walter White' ? 'selected' : '' %> value="Walter White">Walter White</option>
         <option <%= @list == 'Jessie Pinkman' ? 'selected' : '' %> value="Jessie Pinkman">Jessie Pinkman</option>
         <option <%= @list == 'Gus Fring' ? 'selected' : '' %> value="Gus Fring">Gus Fring</option>
+ -->
+      <% @barbers.each do |item| %>
+        <option 
+          
+          <%= @list == item['Name'] ? 'selected' : '' %>><%= item['Name'] %>
+            
+        </option>
+      <%end%>
+
    </select></p>
 
 

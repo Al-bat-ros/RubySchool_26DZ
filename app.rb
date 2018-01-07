@@ -30,6 +30,10 @@ def get_db
     return db
 end
 
+before do
+    db = get_db
+    @barbers = db.execute 'select * from Barbershop'
+end
 
 configure do
   
